@@ -1,31 +1,38 @@
-// async function myFunc() {
-//   const promise = new Promise((resolve, reject) => {
-//     setTimeout(() => resolve('Hello'), 1000);
-//   });
+// async function mine(){
+//   // return "Hello";
 
-//   const error = false;
+//   const promise = new Promise(function(resolve,reject){
+//     setTimeout(function(){
+//       return resolve('bub-eye');
+//     },5000)
+//   })
 
-//   if(!error){
-//     const res = await promise; // Wait until promise is resolved
-//     return res;
-//   } else {
-//     await Promise.reject(new Error('Something went wrong'));
+//   const error = true;
+//   if (!error){
+//     const resolution = await promise;
+//     return resolution;
+//   }else{
+//     await Promise.reject(new Error('Something went horribly awry'));
 //   }
-// }
 
-// myFunc()
-//   .then(res => console.log(res))
+// };
+
+// mine()
+//   .then(response => console.log(response))
 //   .catch(err => console.log(err));
 
-async function getUsers() {
-  // await response of the fetch call
-  const response = await fetch('https://jsonplaceholder.typicode.com/users');
 
-  // Only proceed once its resolved
-  const data = await response.json();
+async function getUsers(){
 
-  // only proceed once second promise is resolved
-  return data;
+  // await the resonse of the fetch call
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+// await for first resolve
+    const data = await response.json();
+    // await second resolve
+    return data;
 }
 
-getUsers().then(users => console.log(users));
+getUsers()
+.then(function(users){
+  console.log(users);
+})
